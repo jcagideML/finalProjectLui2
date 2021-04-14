@@ -140,11 +140,7 @@ public class PartController {
         return service.findProviderById(id);
     }
 
-
-    @PostMapping("discountRates/add")
-    public void addDiscountRate(@RequestBody DiscountRateDTO discountRateDTO) throws InternalExceptionHandler {
-        service.saveDiscountRate(discountRateDTO);
-    }
+    
 
     @GetMapping("discountRates/all")
     public List<DiscountRateDTO> getALLDiscountRate() {
