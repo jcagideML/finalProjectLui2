@@ -38,9 +38,6 @@ public class PartController {
     @Autowired
     IWarehouseService warehouseService;
 
-    @Autowired
-    PartRepository partRepository;
-
     /**
      * GET method to search list of parts, it receives a map with the following data
      * queryType: [“C”,”P”,”V”] -> COMPLETE, PARTIAL, VARIATION
@@ -63,6 +60,12 @@ public class PartController {
         return service.findPart(requestDTO);
     }
 
+    /**
+     * Updates data of a Part with a given DTO
+     * @param part DTO of a Part with the id and data to be updated
+     * @return ResponseEntity<String> OK HTTP code and message if update was successful
+     * @throws InternalExceptionHandler if DTO is not correct
+     */
     @PutMapping()
     public ResponseEntity<String> updatePart(@RequestBody PartDTO part) throws InternalExceptionHandler {
         service.updatePart(part);
@@ -92,6 +95,15 @@ public class PartController {
         return warehouseService.findSubsidiaryOrders(orderRequestDTO);
     }
 
+    /**
+     * Gets a DTO of an order searched by a String orderNumberCM
+     * orderNumberCM -> following the next model of String =  "0001-00000001"
+     * "0001" = subsidiary Id
+     * "00000001" = Order Id
+     * @param orderNumberCM model of String =  "0001-00000001"
+     * @return OrderDTO DTO of an Order with the orderNumberCM
+     * @throws InternalExceptionHandler if received orderNumberCM is misspelled or is not found
+     */
     @GetMapping("orders/{orderNumberCM}")
     //Por algun motivo no se esta haciendo la validacion, esta el tag @validate en el controller tal como la documentacion
     public OrderResponseDTO findByOrderNumberCM(@PathVariable("orderNumberCM") @Pattern(regexp = "^\\d{4}-\\d{8}$") String orderNumberCM) throws InternalExceptionHandler {
@@ -112,6 +124,7 @@ public class PartController {
         return warehouseService.findSubsidiaryStock(request);
     }
 
+<<<<<<< HEAD
     @PostMapping("providers/add")
     public void addProvider(@RequestBody @Valid ProviderDTO providerDTO) throws InternalExceptionHandler {
 
@@ -145,6 +158,8 @@ public class PartController {
         return service.findDiscountRateById(id);
     }
 
+=======
+>>>>>>> 0909ab9aafbffcd24849f73bec42d410855be551
     @PostMapping("")
     public ResponseEntity<?> newPart(@Valid @RequestBody PartDTO part) throws Exception {
 
@@ -182,7 +197,6 @@ public class PartController {
         return ResponseEntity.status(HttpStatus.OK).body("Order updated successfully");
     }
 
-
     @ExceptionHandler(InternalExceptionHandler.class)
     public ResponseEntity<ErrorDTO> handleException(InternalExceptionHandler e) {
         return new ResponseEntity<>(e.getError(), e.getReturnStatus());
@@ -203,4 +217,5 @@ public class PartController {
         error.setDescription(errorException.getAllErrors().get(0).getDefaultMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
 }
