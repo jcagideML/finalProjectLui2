@@ -1,7 +1,9 @@
 package com.bootcamp.finalProject.controllers;
 
 import com.bootcamp.finalProject.dtos.*;
+import com.bootcamp.finalProject.exceptions.IncorrectParamsGivenException;
 import com.bootcamp.finalProject.exceptions.InternalExceptionHandler;
+import com.bootcamp.finalProject.mnemonics.ExceptionMessage;
 import com.bootcamp.finalProject.mnemonics.OrderType;
 import com.bootcamp.finalProject.model.DiscountRate;
 import com.bootcamp.finalProject.model.Provider;
@@ -95,7 +97,7 @@ public class PartController {
     public OrderResponseDTO findByOrderNumberCM(@PathVariable("orderNumberCM") @Pattern(regexp = "^\\d{4}-\\d{8}$") String orderNumberCM) throws InternalExceptionHandler {
 
         if (!orderNumberCM.matches("^\\d{4}-\\d{8}$")) {
-            throw new QueryException("pattern error");
+            throw new IncorrectParamsGivenException(ExceptionMessage.WRONG_ORDER_NUMBER);
         }
         return warehouseService.findByOrderNumberCM(orderNumberCM);
     }
@@ -111,7 +113,8 @@ public class PartController {
     }
 
     @PostMapping("providers/add")
-    public void addProvider(@RequestBody ProviderDTO providerDTO) {
+    public void addProvider(@RequestBody @Valid ProviderDTO providerDTO) throws InternalExceptionHandler {
+
         service.saveProvider(providerDTO);
     }
 

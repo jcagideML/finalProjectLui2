@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -16,8 +18,12 @@ import java.util.List;
 public class ProviderDTO {
 
     private Long idProvider;
+    @NotNull @Valid
     private String name;
+    @NotNull @Valid
     private String address;
+    @NotNull @Valid
     private String phone;
+    @NotNull @Valid
     private String country;
 }

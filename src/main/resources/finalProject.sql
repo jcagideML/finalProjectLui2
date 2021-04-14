@@ -78,13 +78,13 @@ INSERT INTO `order_details` (`id_order_detail`, `account_type`, `quantity`, `id_
 (NULL, 'G', '1', '5', '4');
 
 INSERT INTO subsidiary_stock (id_stock, quantity, id_part, id_subsidiary) VALUES
-(NULL, '20', '15', '1'),
-(NULL, '50', '25', '1'),
-(NULL, '35', '15', '2'),
-(NULL, '60', '17', '3'),
-(NULL, '45', '21', '3'),
-(NULL, '90', '23', '2'),
-(NULL, '20', '28', '2'),
-(NULL, '50', '23', '1'),
-(NULL, '56', '27', '1'),
-(NULL, '12', '26', '3');
+(NULL, '20', '1', '1'),
+(NULL, '50', '3', '1'),
+(NULL, '35', '10', '2'),
+(NULL, '60', '2', '3'),
+(NULL, '45', '6', '3'),
+(NULL, '90', '5', '2'),
+(NULL, '20', '9', '2'),
+(NULL, '50', '12', '1'),
+(NULL, '56', '14', '1'),
+(NULL, '12', '8', '3')

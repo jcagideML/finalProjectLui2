@@ -20,4 +20,6 @@ public class ExceptionMessage {
 
     public static final String WRONG_STATUS_ORDER = "order status does not exist";
 
+    public static final String WRONG_ORDER_NUMBER = "invalid order number";
+
 }
