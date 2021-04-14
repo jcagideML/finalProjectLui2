@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-<<<<<<< HEAD
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-=======
->>>>>>> 0909ab9aafbffcd24849f73bec42d410855be551
+
 import java.util.List;
 
 @Getter

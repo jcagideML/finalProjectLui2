@@ -20,12 +20,9 @@ public class ExceptionMessage {
 
     public static final String WRONG_STATUS_ORDER = "order status does not exist";
 
-<<<<<<< HEAD
     public static final String WRONG_ORDER_NUMBER = "invalid order number";
 
-=======
     public static final String ID_NOT_FOUND = "id not found.";
 
     public static final String LOWER_THAN_ZERO = "the number might be greather than zero.";
->>>>>>> 0909ab9aafbffcd24849f73bec42d410855be551
 }

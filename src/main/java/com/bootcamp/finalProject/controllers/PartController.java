@@ -124,7 +124,6 @@ public class PartController {
         return warehouseService.findSubsidiaryStock(request);
     }
 
-<<<<<<< HEAD
     @PostMapping("providers/add")
     public void addProvider(@RequestBody @Valid ProviderDTO providerDTO) throws InternalExceptionHandler {
 
@@ -137,13 +136,13 @@ public class PartController {
     }
 
     @GetMapping("providers/{id}")
-    public Provider findProviderById(@PathVariable Long id) throws InternalExceptionHandler {
+    public ProviderDTO findProviderById(@PathVariable Long id) throws InternalExceptionHandler {
         return service.findProviderById(id);
     }
 
 
     @PostMapping("discountRates/add")
-    public void addDiscountRate(@RequestBody DiscountRateDTO discountRateDTO) {
+    public void addDiscountRate(@RequestBody DiscountRateDTO discountRateDTO) throws InternalExceptionHandler {
         service.saveDiscountRate(discountRateDTO);
     }
 
@@ -154,12 +153,10 @@ public class PartController {
 
     //EndPoint de prueba para verificar la busqueda por id
     @GetMapping("discountRates/{id}")
-    public DiscountRate findDiscountById(@PathVariable Long id) throws InternalExceptionHandler {
+    public DiscountRateDTO findDiscountById(@PathVariable Long id) throws InternalExceptionHandler {
         return service.findDiscountRateById(id);
     }
 
-=======
->>>>>>> 0909ab9aafbffcd24849f73bec42d410855be551
     @PostMapping("")
     public ResponseEntity<?> newPart(@Valid @RequestBody PartDTO part) throws Exception {
 
