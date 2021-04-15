@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -18,13 +19,22 @@ import java.util.List;
 public class ProviderDTO {
 
     private Long idProvider;
-    @NotNull @Valid
     private String name;
-    @NotNull @Valid
     private String address;
-    @NotNull @Valid
     private String phone;
-    @NotNull @Valid
     private String country;
     private List<ProviderPartsDTO> parts;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProviderDTO that = (ProviderDTO) o;
+        return Objects.equals(idProvider, that.idProvider) && Objects.equals(name, that.name) && Objects.equals(address, that.address) && Objects.equals(phone, that.phone) && Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProvider, name, address, phone, country);
+    }
 }

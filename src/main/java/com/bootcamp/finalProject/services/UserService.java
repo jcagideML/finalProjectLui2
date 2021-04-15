@@ -40,8 +40,8 @@ public class UserService implements IUserService{
     @Override
     public void loadDefaultUsers() {
 
-       User u1 = new User("warehouse",bcryptEncoder.encode("123"),true,new ArrayList<Role>(Arrays.asList(Role.ROLE_WAREHOUSE,Role.ROLE_SUBSIDIARY)));
-       userRepository.save(u1);
+        User u1 = new User("warehouse",bcryptEncoder.encode("123"),true,new ArrayList<Role>(Arrays.asList(Role.ROLE_WAREHOUSE,Role.ROLE_SUBSIDIARY)));
+        userRepository.save(u1);
 
 
         User u2 = new User("uruSub",bcryptEncoder.encode("123"),true,new ArrayList<Role>(Arrays.asList(Role.ROLE_SUBSIDIARY)));

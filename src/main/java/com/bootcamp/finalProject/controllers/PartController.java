@@ -34,7 +34,7 @@ import static com.bootcamp.finalProject.utils.ValidationController.validateDateF
 
 @RestController
 @RequestMapping("/api/v1/parts")
-public class PartController {
+public class PartController extends CentralController{
 
     @Autowired
     IPartService service;
@@ -141,7 +141,7 @@ public class PartController {
             @PathVariable("orderNumberCM") @Pattern(regexp = "^\\d{4}-\\d{8}$") String orderNumberCM) throws InternalExceptionHandler {
 
         if (!orderNumberCM.matches("^\\d{4}-\\d{8}$")) {
-            throw new IncorrectParamsGivenException(ExceptionMessage.WRONG_ORDER_NUMBER);
+            throw new QueryException("pattern error");
         }
         return warehouseService.findByOrderNumberCM(orderNumberCM);
     }
@@ -154,35 +154,6 @@ public class PartController {
         request.setDealerNumber(Long.parseLong(params.get("dealerNumber")));
 
         return warehouseService.findSubsidiaryStock(request);
-    }
-
-    @PostMapping("providers/add")
-    public void addProvider(@RequestBody @Valid ProviderDTO providerDTO) throws InternalExceptionHandler {
-
-        service.saveProvider(providerDTO);
-    }
-
-    @GetMapping("providers/all")
-    public List<ProviderDTO> findAllProviders() {
-        return service.findAllProviders();
-    }
-
-    @GetMapping("providers/{id}")
-    public ProviderDTO findProviderById(@PathVariable Long id) throws InternalExceptionHandler {
-        return service.findProviderById(id);
-    }
-
-    
-
-    @GetMapping("discountRates/all")
-    public List<DiscountRateDTO> getALLDiscountRate() {
-        return service.findALLDiscountRate();
-    }
-
-    //EndPoint de prueba para verificar la busqueda por id
-    @GetMapping("discountRates/{id}")
-    public DiscountRateDTO findDiscountById(@PathVariable Long id) throws InternalExceptionHandler {
-        return service.findDiscountRateById(id);
     }
 
     @PostMapping("")
